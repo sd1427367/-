@@ -1,39 +1,24 @@
 <?php 
-$user='ctm';
-$pass='123456';
 function is_post(){
 	return (isset($_SERVER['REQUEST_METHOD'])&&$_SERVER['REQUEST_METHOD']==='POST');
 }
 //判断是否POST请求
 if (is_post()) {
+	require '../Mysql.class.php';
+	$db=new Mysql(array());
 	//获取用户名密码
 	$m_user=isset($_POST['user'])?$_POST['user']:'';
 	$m_pass=isset($_POST['pass'])?$_POST['pass']:'';
+	//匹配数据库
+	$sql="SELECT * FROM userLogin WHERE user_name='$m_user' AND user_pass='$m_pass'";
+	$res=$db->getOneRow($sql);
 	//判断用户名密码
-	if ($user===$m_user&&$pass===$m_pass) {
+	if ($res) {
 		echo "登陆成功";
 	}else{
 		echo "登录失败";
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ?>
 <!DOCTYPE html>

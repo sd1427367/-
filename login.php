@@ -49,25 +49,5 @@ if (isset($_GET['act'])&&$_GET['act']=='logout') {
 		setcookie('pass','',time()-1);
 		header('Location:login.php');
 }
-?>
-<!DOCTYPE html>
-<html>
-<head>
-	<script type="text/javascript" src='login.js'></script>
-	<meta charset="utf-8">
-	<title>登录</title>
-	<link rel="stylesheet" type="text/php" href="./login.php">
-</head>
-<body>
-	<p>请输入账号密码</p>
-	<form method="post" action="login.php">
-		账号：<input type="text" name="user">
-		<br>
-		密码：<input type="password" name="pass">
-		<br>
-		自动登录：<input type="checkbox" name="remember" >
-		<br>
-		<input type="submit" name="submit" value="登录">
-	</form>
-</body>
-</html>
+
+include'view/login.html';

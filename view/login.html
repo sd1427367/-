@@ -1,21 +1,79 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="zh-CN">
+
 <head>
-	<script type="text/javascript" src='login.js'></script>
 	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<title>登录</title>
-	<link rel="stylesheet" type="text/php" href="./login.php">
+    <link type="text/css" href="view/css/bootstrap.min.css"  rel="stylesheet"/>
+	<link type="text/css" href="view/css/css-login.css"  rel="stylesheet" media="screen" />
+	<script type="text/javascript" src="view/js/jquery-2.1.4.min.js" ></script>
+	<script type="text/javascript" src="view/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="view/js/common.js" ></script>
 </head>
 <body>
-	<p>请输入账号密码</p>
-	<form method="post" action="login.php">
-		账号：<input type="text" name="user">
-		<br>
-		密码：<input type="password" name="pass">
-		<br>
-		自动登录：<input type="checkbox" name="remember" >
-		<br>
-		<input type="submit" name="submit" value="登录">
-	</form>
+	<div class="container-fluid">
+		<div class="modal fade in" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" style="display: block; padding-right: 17px; position: initial;">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title" id="exampleModalLabel">后台管理</h4>
+					</div>
+					<div class="modal-body">
+						<form name="f" method="post" class="form-horizontal">
+							<div class="form-group">
+								<label for="inputUser3" class="col-sm-2 control-label">账号</label>
+								<div class="col-sm-9">
+									<input type="text" name="user" class="form-control" id="user" placeholder="账号" required="required">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="inputPassword3" class="col-sm-2 control-label">密码</label>
+								<div class="col-sm-9">
+									<input type="password" name="pass" class="form-control" id="pw" placeholder="密码" required="required">
+								</div>
+							</div>
+								<div class="form-group">
+								<label for="inputPassword3" class="col-sm-2 control-label">验证码</label>
+								<div class="col-sm-9">
+									<input type="text" name="imgcode" class="form-control" id="imgcode" placeholder="验证码" required="required" autocomplete="off">
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-offset-2 col-sm-9">
+									<img src="./checkcode.php" onclick=this.src='./checkcode.php?'+Math.random()>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-offset-2 col-sm-9">
+									<div class="checkbox">
+										<label>
+											<input type="checkbox" name="ispersis"> 记住我
+										</label>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-offset-2 col-sm-9">
+									<button type="submit" class="btn btn-info">登陆</button>
+									<button type="reset" class="btn btn-warning">重置</button>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<a href="../index.htm"  class="btn btn-link btn-xs" role="button">返回首页</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="login-ext">
+					</div>
+	</div>
+	<script type="text/javascript">
+		focusEle('user');
+	</script>
 </body>
+
 </html>

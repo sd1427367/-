@@ -10,7 +10,7 @@ if (isset($_SESSION['info'])&&isset($_COOKIE['uid'])&&isset($_COOKIE['pass'])) {
 		$res=$db->getOneRow($sql);
 		if ($res) {
 			$_SESSION['info']=$res;
-			echo "自动登陆成功<a href='?act=logout' >安全退出</a>";
+			header('Location:admin_log.php');
 		}
 }else{
 	//判断是否POST请求
@@ -24,18 +24,15 @@ if (isset($_SESSION['info'])&&isset($_COOKIE['uid'])&&isset($_COOKIE['pass'])) {
 			//匹配数据库
 			$sql="SELECT * FROM userLogin WHERE user_name='$m_user' AND user_pass='$m_pass'";
 			$res=$db->getOneRow($sql);
+			$_SESSION['info']=$res;
 			//判断用户名密码
 			if ($res) {
 			//判断是否自动登录
 				if (isset($_POST['ispersis'])) {
-					$_SESSION['info']=$res;
 					setcookie('uid',$res['user_id'],time()+3600);
 					setcookie('pass',$res['user_pass'],time()+3600);
-					echo "自动登陆成功<a href='?act=logout' >安全退出</a>";
-				}else{
-					header('Location:admin_log.php');
 				}
-				
+				header('Location:admin_log.php');
 			}else{
 				echo "登录失败,账号或密码错误";
 			}

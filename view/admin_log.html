@@ -61,10 +61,10 @@
                                 <td class="tdcenter"><a href="comment.php-gid=1.php">0</a></td>
                                 <td class="tdcenter">0</td>
                           </tr>
-                          <?php for ($i=0; $i < $count; $i++) { 
-                                echo "<tr>
+                          <?php for ($i=0; $i < $count; $i++) { ?>
+                                <tr>
                                 <td width='21'><input type='checkbox' name='blog[]' value='1' class='ids' /></td>
-                                <td width='490'><a href='write_log.php-action=edit&gid=1.php?title=".$res[$i]['title']."&time=".$res[$i]['time']. "'>".$res[$i]['title']."</a>
+                                <td width='490'><a href="write_log.php?action=edit&id=<?php echo $res[$i]['id'];?>"><?php echo $res[$i]['title'];?></a>
                                     <span style='display:none; margin-left:8px;'></span>
                                 </td>
                                 <td class='tdcenter'>
@@ -73,11 +73,11 @@
                                 </td>
                                 <td><a href='admin_log.php-uid=1.php'>紫殇</a></td>
                                 <td><a href='admin_log.php-sid=-1.php'>未分类</a></td>
-                                <td class='small'>".$res[$i]['time']."</td>
+                                <td class='small'><?php echo $res[$i]['time'];?></td>
                                 <td class='tdcenter'><a href='comment.php-gid=1.php'>0</a></td>
                                 <td class='tdcenter'>0</td>
-                          </tr>";
-                        }?>
+                          </tr>
+                        <?php } ?>
                         </tbody>
                     </table>
                   <input name="token" id="token" value="bb1bb62fac972af39766d4071fd3133d" type="hidden" />
